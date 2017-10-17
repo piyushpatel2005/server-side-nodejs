@@ -12,7 +12,8 @@
     "NodeJS"
   ],
   "dependencies": {
-    "express": "^4.13.0"
+    "express": "^4.13.0",
+    "morgan": "^1.9.0"
   },
   "author": "Piyush Patel",
   "license": "MIT"
