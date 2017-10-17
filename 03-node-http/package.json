@@ -1,0 +1,17 @@
+{
+  "name": "node-http",
+  "version": "0.0.0",
+  "description": "Simple NodeJS server functionality using HTTP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "keywords": [
+    "NodeJS",
+    "HTTP",
+    "server"
+  ],
+  "author": "Piyush Patel",
+  "license": "MIT"
+}
