@@ -1,0 +1,19 @@
+{
+  "name": "express",
+  "version": "0.0.0",
+  "description": "A simple Express Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "keywords": [
+    "ExpressJs",
+    "NodeJS"
+  ],
+  "dependencies": {
+    "express": "^4.13.0"
+  },
+  "author": "Piyush Patel",
+  "license": "MIT"
+}
