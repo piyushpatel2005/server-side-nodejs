@@ -1,5 +1,3 @@
-'use strict';
-
 var rect = require('./rectangle');
 
 function solveRect(l, b) {

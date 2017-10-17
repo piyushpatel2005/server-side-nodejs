@@ -29,3 +29,13 @@ From another file, you can import this file using:
 If it is installed modules, then they can be importing directly as module name.
 
 `require('<module-name>')`
+
+Check the example of modules at [01-nodejs](./01-callbacks/index.js).
+
+## Callbacks:
+
+NodeJS uses asynchronous programming model. This is also called non-blocking model. It uses callback which will be executed once another function has been done.
+
+When error occurs, an error object is returned else a proper object is returned.
+
+Check [example of callback](./02-nodejs/rectangle.js)
