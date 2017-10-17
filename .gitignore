@@ -5,3 +5,5 @@ week2/
 week3/
 week4/
 dist
+**/npm-debug.log
+npm-debug.log
