@@ -1,0 +1,12 @@
+{
+  "name": "node-mongo",
+  "version": "0.0.0",
+  "description": "A mongodb node module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "author": "Piyush P",
+  "license": "MIT"
+}

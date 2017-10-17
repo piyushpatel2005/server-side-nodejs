@@ -68,3 +68,7 @@ The generated applications has various folders.
 We can install `express-generator` globally using:
 
 `npm install -g express-generator`.
+
+## MongoDB
+
+MongoDB driver is available as npm package name `mongodb`. This provides various interaction functionality with the MongoDB.
