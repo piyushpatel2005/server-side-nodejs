@@ -27,6 +27,17 @@ connect.then((db) => {
   })
   .then((dish) => {
     console.log(dish);
+
+    dish.comments.push({
+      rating: 5,
+      comment: "I'm loving it!",
+      author: "Piyush Patel"
+    })
+    return dish.save();
+
+  }).
+  then((dish) => {
+    console.log(dish);
     return db.collection('dishes').drop();
   })
   .then(() => {
