@@ -36,8 +36,44 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('12345-67890'));
 
+function auth (req, res, next) {
+  if (!req.signedCookies.user) {
+    console.log(req.headers);
+    var authHeader = req.headers.authorization;
+
+    if(!authHeader) {
+      var err = new Error('You are not authenticated');
+      res.setHeader('WWW-Authenticate', 'Basic');
+      err.status = 401;
+      next(err);
+      return;
+    }
+    var auth = new Buffer(authHeader.split(' ')[1], 'base64').toString().split(':');
+    var user = auth[0];
+    var pass = auth[1];
+    if(user == 'admin' && pass == 'password') {
+      res.cookie('user', 'admin', {signed: true});
+      next();
+    } else {
+      var err = new Error('You are not authenticated');
+      res.setHeader('WWW-Authenticate', 'Basic');
+      err.status = 401;
+      next(err);
+    }
+  } else {
+    if(req.signedCookies.user === 'admin') {
+      next();
+    } else {
+      var err = new Error('You are not authenticated!');
+      err.status = 401;
+      next(err);
+    }
+  }
+}
+// authenticate user before serving any request.
+app.use(auth);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
