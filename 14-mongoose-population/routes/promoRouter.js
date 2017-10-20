@@ -18,7 +18,7 @@ promoRouter.get('/', (req, res, next) => {
   .catch(err => next(err));
 });
 
-promoRouter.post('/', authenticate.verifyUser, (req, res, next) => {
+promoRouter.post('/', authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
   Promotions.create(req.body)
   .then((promo) => {
     console.log('Promotion create ', promo);
@@ -29,12 +29,12 @@ promoRouter.post('/', authenticate.verifyUser, (req, res, next) => {
   .catch(err => next(err));
 });
 
-promoRouter.put('/', authenticate.verifyUser, (req, res, next) => {
+promoRouter.put('/', authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
   res.statusCode = 403;
   res.end('PUT operation is not supported on /promotions');
 });
 
-promoRouter.delete('/', authenticate.verifyUser, (req, res, next) => {
+promoRouter.delete('/', authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
   Promotions.remove({})
   .then((resp) => {
     res.statusCode = 200;
@@ -55,12 +55,12 @@ promoRouter.get('/:promoId', (req, res, next) => {
   .catch(err => next(err));
 });
 
-promoRouter.post('/:promoId', authenticate.verifyUser, (req, res, next) => {
+promoRouter.post('/:promoId', authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
   res.statusCode = 403;
   res.end('POST operation is not supported on /promotions/:promoId');
 });
 
-promoRouter.put('/:promoId', authenticate.verifyUser, (req, res, next) => {
+promoRouter.put('/:promoId', authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
   Promotions.findByIdAndUpdate(req.params.promoId, {
     $set: req.body
   }, {new: true})
@@ -72,7 +72,7 @@ promoRouter.put('/:promoId', authenticate.verifyUser, (req, res, next) => {
   .catch(err => next(err));
 });
 
-promoRouter.delete('/:promoId', authenticate.verifyUser, (req, res, next) => {
+promoRouter.delete('/:promoId', authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
   Promotions.findByIdAndRemove(req.params.promoId)
   .then((promo) => {
     res.statusCode = 200;
